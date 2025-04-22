@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+        /* border: 2px solid red; */
+        display: flex;
+        position: relative;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+        top: 70px;
+        width: 50%;
+        height: 547px;
+    }
+
+    .box {
+        display: flex;
+        position: relative;
+        flex-direction: column;
+        border: 2px solid black;
+        border-radius: 10px;
+        background-color: whitesmoke;
+        box-shadow: 2px 2px whitesmoke;
+        width: 50%;
+        height: 410px;
+    }
+
+    .box h1 {
+        display: flex;
+        position: relative;
+        justify-content: center;
+        align-items: center;
+        font-family: sans-serif;
+        font-size: 24px;
+        margin: 6px;
+        padding: 8px;
+        background-color: rgb(195, 195, 223);
+        border-radius: 50px;
+        top: 5px;
+
+    }
+
+    .box input {
+        /* border: 2px solid yellow; */
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        position: relative;
+        width: 70%;
+        height: 50px;
+        margin: 0 auto;
+        top: 20px;
+        border-radius: 50px;
+        text-align: center;
+        color: black;
+        transition: width 0.5 ease-in-out;
+    }
+
+    .box input:hover {
+        background-color: aquamarine;
+        width: 72%;
+    }
+
+    .box button {
+        /* border: 2px solid blue; */
+        display: block;
+        position: relative;
+        width: 20%;
+        height: 30px;
+        margin: 0 auto;
+        padding: 0;
+        top: 30px;
+        border-radius: 20px;
+        text-align: center;
+        transition: width 0.5s ease-in-out;
+        background-color: rgb(7, 219, 7);
+        border: 0.5px solid;
+
+        /* border: none; */
+    }
+
+    .box button span {
+        display: block;
+        position: relative;
+        margin: auto;
+        text-align: center;
+    }
+
+    .box button:hover {
+        display: flex;
+        position: relative;
+        background-color: rgb(4, 147, 4);
+        color: white;
+        width: 25%;
+        height: 35px;
+    }
+
+    .output {
+        display: flex;
+        position: relative;
+        /* border: 2px solid rgb(206, 11, 11); */
+        background-color: rgb(211, 255, 248);
+        margin: auto;
+        width: 80%;
+        /* top: 50px; */
+        height: 72px;
+        border-radius: 20px;
+    }
+
+    @media (max-width: 600px) {
+        .container {
+            /* border: 2px solid red; */
+            margin-top: 30px;
+            width: 100%;
+        }
+
+        .box {
+            border: 2px solid skyblue;
+            padding: 5px;
+            width: 90%;
+        }
+
+        .box h1 {
+            font-size: 18px;
+        }
+
+        .box input {
+            height: 40px;
+            font-size: 16px;
+        }
+
+        .box button {
+            width: 90px;
+            height: 35px;
+        }
+
+        .box button:hover {
+            width: 100px;
+        }
+    }
+</style>
+
+<body>
+    <div class="container">
+        <div class="box">
+            <h1>Testing To Take Input In Box</h1>
+            <input id="txt1" type="text" placeholder="Enter Your Name"oninput="validateText(this)">
+            <input id="txt2" type="text" placeholder="Enter Your Second Name"oninput="validateText(this)">
+            <input id="age" type="number" placeholder="Enter Age">
+            <button onclick="showMe()"><span>Submit</span></button>
+            <div class="output">
+                <div class="bground">
+                    <p id="demo">loading...</p>
+                    <p id="demo1"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function validateText(input) {
+            input.value = input.value.replace(/[^a-zA-Z]/g, '');
+        }
+        function showMe() {
+            let first = document.getElementById("txt1").value;
+            let second = document.getElementById("txt2").value;
+            let year = Number(document.getElementById("age").value);
+            let fullName = first + " " + second;
+            let years = year;
+            document.getElementById("demo").innerHTML = "Your Full Name Is: " + fullName;
+            document.getElementById("demo1").innerHTML = "Age: " + years + "yrs";
+
+            if (!first || !second) {
+                alert("Please enter valid characters First & Last name (letter only).");
+                return;
+            }
+            if (!year) {
+                alert("Please enter a valid age.");
+                return;
+            }
+        }
+    </script>
+</body>
+
+</html>
